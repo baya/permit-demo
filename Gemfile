@@ -1,3 +1,4 @@
+# bundle config mirror.https://rubygems.org https://ruby.taobao.org
 source 'https://rubygems.org'
 
 

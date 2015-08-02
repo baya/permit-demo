@@ -13,9 +13,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(name: params[:current_user])
   end
 
+  # 将 current_user 的 permit 缓存起来
+  def current_permit
+    @current_permit ||= Permit.new(current_user)
+  end
+
   # 判断当前登录用户是否具有名字为 name 的权限
   def permit?(name, *args)
-    Permit.new(current_user).can?(name, *args)
+    current_permit.can?(name, *args)
   end
 
 
