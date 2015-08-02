@@ -1,0 +1,9 @@
+<h2>Create Post</h2>
+<%= form_for @post do |f| %>
+  Title: <%= f.text_field :title %> <br/>
+  <br/>
+  Content: <%= f.text_area :content %> <br/>
+  <br/>
+  <%= hidden_field_tag :current_user, params[:current_user] %>
+  <%= f.submit 'Create' %>
+<% end %>

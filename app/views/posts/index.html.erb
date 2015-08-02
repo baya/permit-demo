@@ -1,0 +1,32 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<h2>Posts Index</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>标题</th>
+    <th>内容</th>
+    <th>作者</th>
+    <th>创建时间</th>
+    <th>编辑</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.created_at.strftime('%Y%m%d %H:%M:%S')%></td>
+      <% if permit?(:edit_post, post) %>
+        <td><%= link_to 'edit', "#{edit_post_url(post)}?current_user=#{params[:current_user]}" %></td>
+      <% end  %>
+    </tr>
+  <% end %>
+</table>
