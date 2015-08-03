@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   # 将 current_user 的 permit 缓存起来
   def current_permit
-    @current_permit ||= Permit.new(current_user)
+    @current_permit ||= Permit.new(current_user || User.new)
   end
 
   # 判断当前登录用户是否具有名字为 name 的权限

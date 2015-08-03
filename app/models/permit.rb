@@ -15,7 +15,7 @@ class Permit < BasicObject
   def initialize(user)
     # 权限的实际拥有者
     @user = user
-    
+
     # 没有使用常量去存储权限映射，是为了防止权限映射在程序员不知情的情况下被修改
     @permission_mapper = ::Permit.permission_mapper
 
