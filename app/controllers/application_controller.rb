@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   # 判断当前登录用户是否具有名字为 name 的权限
   def permit?(name, *args)
-    current_permit.can?(name, *args)
+    current_permit.can?(:all) || current_permit.can?(name, *args)
   end
 
 
